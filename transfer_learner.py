@@ -88,6 +88,9 @@ class TransferLearner:
         '''
         raise NotImplementedError
 
+    def output_layer_vector(self):
+        '''Returns a fixed vector of strings that correspond to output excitations'''
+        raise NotImplementedError()
     
     @lru_cache(1024)
     def input_thumbnail_for_image_key(self,image_key:str)->np.array:
@@ -120,10 +123,6 @@ class ImageDatasetSource(tf.data.Dataset):
 
     def path_for_image_key(self,image_key)->str:
         '''The filesystem path for the image tied to the specified key'''
-        raise NotImplementedError()
-
-    def output_layer_vector(self):
-        '''Returns a fixed vector of strings that correspond to output excitations'''
         raise NotImplementedError()
 
     def validation_split(self):
