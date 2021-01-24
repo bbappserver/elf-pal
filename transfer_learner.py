@@ -74,6 +74,20 @@ class TransferLearner:
         '''
         raise NotImplementedError
 
+    def believed_tags_on_image(self,image_path,min_threshold=0.8):
+        '''
+        Returns the tags the network thinks apply to the image as [tag,confidence]
+        Where closer to 1 is more confident and 0.5 is uncertain.
+        '''
+        raise NotImplementedError
+
+    def believed_tags_not_on_image(self,image_path,max_threshold=0.2):
+        '''
+        Returns the tags the network thinks don't apply to the image as [tag,confidence]
+        Where a closer to zero is more confident, and 0.5 is uncertain
+        '''
+        raise NotImplementedError
+
     
     @lru_cache(1024)
     def input_thumbnail_for_image_key(self,image_key:str)->np.array:
